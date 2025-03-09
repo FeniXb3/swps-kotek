@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kotek", "Kotek\Kotek.csproj", "{A7CF2C3C-F983-4F14-B0FF-217EBCDE61DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7CF2C3C-F983-4F14-B0FF-217EBCDE61DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7CF2C3C-F983-4F14-B0FF-217EBCDE61DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7CF2C3C-F983-4F14-B0FF-217EBCDE61DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7CF2C3C-F983-4F14-B0FF-217EBCDE61DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
