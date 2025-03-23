@@ -15,14 +15,17 @@ while (true)
     }
     if (pressedKeyInfo.Key == ConsoleKey.W)
     {
-        hero.y += 1;
+        hero.y -= 1;
     }
     if (pressedKeyInfo.Key == ConsoleKey.S)
     {
-        hero.y -= 1;
+        hero.y += 1;
     }
     Console.SetCursorPosition(0, 0);
     Console.WriteLine($"({hero.x}, {hero.y})");
+
+    Console.SetCursorPosition(hero.x, hero.y);
+    Console.Write("@");
 }
 
 Console.WriteLine("Press Space to continue...");
