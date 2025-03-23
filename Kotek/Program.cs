@@ -5,25 +5,37 @@ Console.WriteLine($"({hero.x}, {hero.y})");
 while (true)
 {
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
-    
+
     Console.SetCursorPosition(hero.x, hero.y);
     Console.Write(" ");
-    
+
     if (pressedKeyInfo.Key == ConsoleKey.A)
     {
-        hero.x -= 1;
+        if (hero.x > 0)
+        {
+            hero.x -= 1;
+        }
     }
     if (pressedKeyInfo.Key == ConsoleKey.D)
     {
-        hero.x += 1;
+        if (hero.x < Console.BufferWidth - 1)
+        {
+            hero.x += 1;
+        }
     }
     if (pressedKeyInfo.Key == ConsoleKey.W)
     {
-        hero.y -= 1;
+        if (hero.y > 0)
+        {
+            hero.y -= 1;
+        }
     }
     if (pressedKeyInfo.Key == ConsoleKey.S)
     {
-        hero.y += 1;
+        if (hero.y < Console.BufferHeight - 1)
+        {
+            hero.y += 1;
+        }
     }
 
     Console.SetCursorPosition(0, 0);
