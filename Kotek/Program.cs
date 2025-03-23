@@ -12,19 +12,44 @@ while (true)
     Console.SetCursorPosition(hero.x, hero.y);
     Console.Write(" ");
 
+    Point direction;
     switch (pressedKeyInfo.Key)
     {
         case ConsoleKey.A:
-            hero.x -= hero.speed;
+            direction = new Point
+            {
+                x = -hero.speed,
+                y = 0
+            };
+            hero.x += direction.x;
+            hero.y += direction.y;
             break;
         case ConsoleKey.D:
-            hero.x += hero.speed;
+            direction = new Point
+            {
+                x = hero.speed,
+                y = 0
+            };
+            hero.x += direction.x;
+            hero.y += direction.y;
             break;
         case ConsoleKey.W:
-            hero.y -= hero.speed;
+            direction = new Point
+            {
+                x = 0,
+                y = -hero.speed
+            };
+            hero.x += direction.x;
+            hero.y += direction.y;
             break;
         case ConsoleKey.S:
-            hero.y += hero.speed;
+            direction = new Point
+            {
+                x = 0,
+                y = hero.speed
+            };
+            hero.x += direction.x;
+            hero.y += direction.y;
             break;
     }
 
