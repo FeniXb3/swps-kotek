@@ -5,6 +5,10 @@ Console.WriteLine($"({hero.x}, {hero.y})");
 while (true)
 {
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
+    
+    Console.SetCursorPosition(hero.x, hero.y);
+    Console.Write(" ");
+    
     if (pressedKeyInfo.Key == ConsoleKey.A)
     {
         hero.x -= 1;
@@ -22,8 +26,6 @@ while (true)
         hero.y += 1;
     }
 
-    Console.Clear();
-    
     Console.SetCursorPosition(0, 0);
     Console.WriteLine($"({hero.x}, {hero.y})");
 
