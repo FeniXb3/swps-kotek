@@ -4,9 +4,10 @@ directionsMap.Add(ConsoleKey.D, new Point(1, 0));
 directionsMap.Add(ConsoleKey.W, new Point(0, -1));
 directionsMap.Add(ConsoleKey.S, new Point(0, 1));
 
+Point startingPoint = new Point(1, 2);
 Player hero = new Player("Snake", "@");
 hero.speed = 1;
-hero.position = new Point(1, 2);
+hero.position = startingPoint;
 
 List<Player> clones = new List<Player>();
 clones.Add(hero);
@@ -26,7 +27,7 @@ while (true)
         if (pressedKeyInfo.Key == ConsoleKey.C)
         {
             Player clone = new Player(hero.name, "C");
-            clone.position = new Point(1, 2);
+            clone.position = startingPoint;
             clones.Add(clone);
         }
 
