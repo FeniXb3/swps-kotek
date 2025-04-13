@@ -6,16 +6,14 @@ directionsMap.Add(ConsoleKey.S, new Point(0, 1));
 
 Player hero = new Player("Snake");
 hero.speed = 1;
-hero.x = 1;
-hero.y = 2;
-
+hero.position = new Point(1, 2);
 
 while (true)
 {
     Console.SetCursorPosition(0, 0);
-    Console.WriteLine($"({hero.x}, {hero.y})    ");
+    Console.WriteLine($"({hero.position.x}, {hero.position.y})    ");
 
-    Console.SetCursorPosition(hero.x, hero.y);
+    Console.SetCursorPosition(hero.position.x, hero.position.y);
     Console.Write("@");
 
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
@@ -25,16 +23,16 @@ while (true)
         continue;
     }
 
-    Console.SetCursorPosition(hero.x, hero.y);
+    Console.SetCursorPosition(hero.position.x, hero.position.y);
     Console.Write(" ");
 
     Point direction = directionsMap[pressedKeyInfo.Key];
     
-    hero.x += direction.x * hero.speed;
-    hero.y += direction.y * hero.speed;
+    hero.position.x += direction.x * hero.speed;
+    hero.position.y += direction.y * hero.speed;
 
-    hero.x = Math.Clamp(hero.x, 0, Console.BufferWidth - 1);
-    hero.y = Math.Clamp(hero.y, 0, Console.BufferHeight - 1);
+    hero.position.x = Math.Clamp(hero.position.x, 0, Console.BufferWidth - 1);
+    hero.position.y = Math.Clamp(hero.position.y, 0, Console.BufferHeight - 1);
 
     hero.speed += 1;
 }
