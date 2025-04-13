@@ -4,37 +4,50 @@ directionsMap.Add(ConsoleKey.D, new Point(1, 0));
 directionsMap.Add(ConsoleKey.W, new Point(0, -1));
 directionsMap.Add(ConsoleKey.S, new Point(0, 1));
 
-Player hero = new Player("Snake");
+Player hero = new Player("Snake", "@");
 hero.speed = 1;
 hero.position = new Point(1, 2);
 
+List<Player> clones = new List<Player>();
+clones.Add(hero);
+
 while (true)
 {
-    Console.SetCursorPosition(0, 0);
-    Console.WriteLine($"({hero.position.x}, {hero.position.y})    ");
-
-    Console.SetCursorPosition(hero.position.x, hero.position.y);
-    Console.Write("@");
+    foreach (Player element in clones)
+    {
+        Console.SetCursorPosition(element.position.x, element.position.y);
+        Console.Write(element.avatar);
+    }
 
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
 
     if (!directionsMap.ContainsKey(pressedKeyInfo.Key))
     {
+        if (pressedKeyInfo.Key == ConsoleKey.C)
+        {
+            Player clone = new Player(hero.name, "C");
+            clone.position = new Point(1, 2);
+            clones.Add(clone);
+        }
+
         continue;
     }
 
-    Console.SetCursorPosition(hero.position.x, hero.position.y);
-    Console.Write(" ");
+    foreach (Player element in clones)
+    {
+        Console.SetCursorPosition(element.position.x, element.position.y);
+        Console.Write(" ");
 
-    Point direction = directionsMap[pressedKeyInfo.Key];
-    
-    hero.position.x += direction.x * hero.speed;
-    hero.position.y += direction.y * hero.speed;
+        Point direction = directionsMap[pressedKeyInfo.Key];
+        
+        element.position.x += direction.x * element.speed;
+        element.position.y += direction.y * element.speed;
 
-    hero.position.x = Math.Clamp(hero.position.x, 0, Console.BufferWidth - 1);
-    hero.position.y = Math.Clamp(hero.position.y, 0, Console.BufferHeight - 1);
+        element.position.x = Math.Clamp(element.position.x, 0, Console.BufferWidth - 1);
+        element.position.y = Math.Clamp(element.position.y, 0, Console.BufferHeight - 1);
 
-    hero.speed += 1;
+        element.speed += 1;
+    }
 }
 
 Console.WriteLine("Press Space to continue...");
