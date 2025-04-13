@@ -21,8 +21,6 @@ while (true)
                 x = -hero.speed,
                 y = 0
             };
-            hero.x += direction.x;
-            hero.y += direction.y;
             break;
         case ConsoleKey.D:
             direction = new Point
@@ -30,8 +28,6 @@ while (true)
                 x = hero.speed,
                 y = 0
             };
-            hero.x += direction.x;
-            hero.y += direction.y;
             break;
         case ConsoleKey.W:
             direction = new Point
@@ -39,8 +35,6 @@ while (true)
                 x = 0,
                 y = -hero.speed
             };
-            hero.x += direction.x;
-            hero.y += direction.y;
             break;
         case ConsoleKey.S:
             direction = new Point
@@ -48,10 +42,14 @@ while (true)
                 x = 0,
                 y = hero.speed
             };
-            hero.x += direction.x;
-            hero.y += direction.y;
+            break;
+        default:
+            direction = new Point();
             break;
     }
+    
+    hero.x += direction.x;
+    hero.y += direction.y;
 
     hero.x = Math.Clamp(hero.x, 0, Console.BufferWidth - 1);
     hero.y = Math.Clamp(hero.y, 0, Console.BufferHeight - 1);
