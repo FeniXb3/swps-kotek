@@ -22,16 +22,18 @@ while (true)
     Console.SetCursorPosition(hero.x, hero.y);
     Console.Write(" ");
 
-    if (directionsMap.ContainsKey(pressedKeyInfo.Key))
+    if (!directionsMap.ContainsKey(pressedKeyInfo.Key))
     {
-        Point direction = directionsMap[pressedKeyInfo.Key];
-        
-        hero.x += direction.x;
-        hero.y += direction.y;
-
-        hero.x = Math.Clamp(hero.x, 0, Console.BufferWidth - 1);
-        hero.y = Math.Clamp(hero.y, 0, Console.BufferHeight - 1);
+        continue;
     }
+
+    Point direction = directionsMap[pressedKeyInfo.Key];
+    
+    hero.x += direction.x;
+    hero.y += direction.y;
+
+    hero.x = Math.Clamp(hero.x, 0, Console.BufferWidth - 1);
+    hero.y = Math.Clamp(hero.y, 0, Console.BufferHeight - 1);
 }
 
 Console.WriteLine("Press Space to continue...");
