@@ -22,7 +22,7 @@ while (true)
     Console.SetCursorPosition(hero.x, hero.y);
     Console.Write(" ");
 
-    Point direction = directionsMap[pressedKeyInfo.Key];
+    Point direction = directionsMap.GetValueOrDefault(pressedKeyInfo.Key, new Point(0, 0));
     
     hero.x += direction.x;
     hero.y += direction.y;
