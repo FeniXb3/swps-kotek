@@ -12,6 +12,29 @@ hero.position = startingPoint;
 List<Player> clones = new List<Player>();
 clones.Add(hero);
 
+string[] level =
+[
+    "#############################",
+    "#...........................#",
+    "#....................&......#",
+    "#...........................#",
+    "#...........................#",
+    "#...........................#",
+    "#...........................#",
+    "#...........................#",
+    "#...........................#",
+    "#...........................#",
+    "#...........................#",
+    "#...........................#",
+    "#...........................#",
+    "#############################",
+];
+
+foreach (string row in level)
+{
+    Console.WriteLine(row);
+}
+
 while (true)
 {
     foreach (Player element in clones)
@@ -37,7 +60,9 @@ while (true)
     foreach (Player element in clones)
     {
         Console.SetCursorPosition(element.position.x, element.position.y);
-        Console.Write(" ");
+        string row = level[element.position.y];
+        char cellValue = row[element.position.x];
+        Console.Write(cellValue);
 
         Point direction = directionsMap[pressedKeyInfo.Key];
         
@@ -47,7 +72,7 @@ while (true)
         element.position.x = Math.Clamp(element.position.x, 0, Console.BufferWidth - 1);
         element.position.y = Math.Clamp(element.position.y, 0, Console.BufferHeight - 1);
 
-        element.speed += 1;
+        // element.speed += 1;
     }
 }
 
