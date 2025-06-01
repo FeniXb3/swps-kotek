@@ -59,10 +59,7 @@ while (true)
 
     foreach (Player element in clones)
     {
-        Console.SetCursorPosition(element.position.x, element.position.y);
-        string row = level[element.position.y];
-        char cellValue = row[element.position.x];
-        Console.Write(cellValue);
+        RedrawCell(element.position);
 
         Point direction = directionsMap[pressedKeyInfo.Key];
         element.Move(direction, level);
@@ -77,3 +74,10 @@ do
     keyInfo = Console.ReadKey(true);
 } while (keyInfo.Key != ConsoleKey.Spacebar);
 
+void RedrawCell(Point position)
+{
+    Console.SetCursorPosition(position.x, position.y);
+    string row = level[position.y];
+    char cellValue = row[position.x];
+    Console.Write(cellValue);
+}
