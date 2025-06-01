@@ -12,8 +12,13 @@ hero.position = startingPoint;
 List<Player> clones = new List<Player>();
 clones.Add(hero);
 
-NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L");
-npc.position = new Point(5, 5);
+List<NonPlayerCharacter> npcs = new List<NonPlayerCharacter>();
+for (int i = 0; i < 5; i++)
+{
+    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L");
+    npc.position = new Point(5 + i, 5);
+    npcs.Add(npc);
+}
 
 string[] level =
 [
@@ -44,7 +49,11 @@ while (true)
     {
         element.Display();
     }
-    npc.Display();
+
+    foreach (NonPlayerCharacter npc in npcs)
+    {
+        npc.Display();
+    }
 
     string chosenAction = hero.ChooseAction();
 
@@ -68,11 +77,13 @@ while (true)
         element.Move(direction, level);
     }
 
-    string npcAction = npc.ChooseAction();
-    RedrawCell(npc.position);
-    Point npcDirection = directionsMap[npcAction];
-    npc.Move(npcDirection, level);
-
+    foreach (NonPlayerCharacter npc in npcs)
+    {
+        string npcAction = npc.ChooseAction();
+        RedrawCell(npc.position);
+        Point npcDirection = directionsMap[npcAction];
+        npc.Move(npcDirection, level);
+    }
 }
 
 Console.WriteLine("Press Space to continue...");
