@@ -1,8 +1,14 @@
-﻿Dictionary<ConsoleKey, Point> directionsMap = new Dictionary<ConsoleKey, Point>();
-directionsMap.Add(ConsoleKey.A, new Point(-1, 0));
-directionsMap.Add(ConsoleKey.D, new Point(1, 0));
-directionsMap.Add(ConsoleKey.W, new Point(0, -1));
-directionsMap.Add(ConsoleKey.S, new Point(0, 1));
+﻿Dictionary<ConsoleKey, string> keyActionsMap = new Dictionary<ConsoleKey, string>();
+keyActionsMap.Add(ConsoleKey.A, "moveLeft");
+keyActionsMap.Add(ConsoleKey.D, "moveRight");
+keyActionsMap.Add(ConsoleKey.W, "moveUp");
+keyActionsMap.Add(ConsoleKey.S, "moveDown");
+
+Dictionary<string, Point> directionsMap = new Dictionary<string, Point>();
+directionsMap.Add("moveLeft", new Point(-1, 0));
+directionsMap.Add("moveRight", new Point(1, 0));
+directionsMap.Add("moveUp", new Point(0, -1));
+directionsMap.Add("moveDown", new Point(0, 1));
 
 Point startingPoint = new Point(16, 2);
 Player hero = new Player("Snake", "@");
@@ -43,8 +49,9 @@ while (true)
     }
 
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
+    string chosenAction = keyActionsMap.GetValueOrDefault(pressedKeyInfo.Key, "pass");
 
-    if (!directionsMap.ContainsKey(pressedKeyInfo.Key))
+    if (!directionsMap.ContainsKey(chosenAction))
     {
         if (pressedKeyInfo.Key == ConsoleKey.C)
         {
@@ -60,7 +67,7 @@ while (true)
     {
         RedrawCell(element.position);
 
-        Point direction = directionsMap[pressedKeyInfo.Key];
+        Point direction = directionsMap[chosenAction];
         element.Move(direction, level);
     }
 }
