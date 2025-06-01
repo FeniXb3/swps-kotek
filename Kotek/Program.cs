@@ -1,11 +1,4 @@
-﻿Dictionary<ConsoleKey, string> keyActionsMap = new Dictionary<ConsoleKey, string>();
-keyActionsMap.Add(ConsoleKey.A, "moveLeft");
-keyActionsMap.Add(ConsoleKey.D, "moveRight");
-keyActionsMap.Add(ConsoleKey.W, "moveUp");
-keyActionsMap.Add(ConsoleKey.S, "moveDown");
-keyActionsMap.Add(ConsoleKey.C, "clone");
-
-Dictionary<string, Point> directionsMap = new Dictionary<string, Point>();
+﻿Dictionary<string, Point> directionsMap = new Dictionary<string, Point>();
 directionsMap.Add("moveLeft", new Point(-1, 0));
 directionsMap.Add("moveRight", new Point(1, 0));
 directionsMap.Add("moveUp", new Point(0, -1));
@@ -49,8 +42,7 @@ while (true)
         element.Display();
     }
 
-    ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
-    string chosenAction = keyActionsMap.GetValueOrDefault(pressedKeyInfo.Key, "pass");
+    string chosenAction = hero.ChooseAction();
 
     if (!directionsMap.ContainsKey(chosenAction))
     {
