@@ -3,6 +3,7 @@ keyActionsMap.Add(ConsoleKey.A, "moveLeft");
 keyActionsMap.Add(ConsoleKey.D, "moveRight");
 keyActionsMap.Add(ConsoleKey.W, "moveUp");
 keyActionsMap.Add(ConsoleKey.S, "moveDown");
+keyActionsMap.Add(ConsoleKey.C, "clone");
 
 Dictionary<string, Point> directionsMap = new Dictionary<string, Point>();
 directionsMap.Add("moveLeft", new Point(-1, 0));
@@ -53,7 +54,7 @@ while (true)
 
     if (!directionsMap.ContainsKey(chosenAction))
     {
-        if (pressedKeyInfo.Key == ConsoleKey.C)
+        if (chosenAction == "clone")
         {
             Player clone = new Player(hero.name, "C");
             clone.position = startingPoint;
