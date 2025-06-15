@@ -19,28 +19,9 @@ for (int i = 0; i < 5; i++)
     characters.Add(npc);
 }
 
-string[] level =
-[
-    "####################################",
-    "#..................................#",
-    "#...........#........&......########",
-    "#.....#....................#####",
-    "#...............................#",
-    "#....................#.....#####",
-    "##..........................#",
-    "#...........................#",
-    "#...........................#",
-    "#...........................#",
-    "#...........#...............#",
-    "#...........#...............#",
-    "#...........#...............#",
-    "#############################",
-];
+Level firstLevel = new Level();
 
-foreach (string row in level)
-{
-    Console.WriteLine(row);
-}
+firstLevel.Display();
 
 while (true)
 {
@@ -67,10 +48,10 @@ while (true)
 
             continue;
         }
-        RedrawCell(element.position);
+        firstLevel.RedrawCell(element.position);
 
         Point direction = directionsMap[chosenAction];
-        element.Move(direction, level);
+        element.Move(direction, firstLevel);
     }
 }
 
@@ -81,11 +62,3 @@ do
 {
     keyInfo = Console.ReadKey(true);
 } while (keyInfo.Key != ConsoleKey.Spacebar);
-
-void RedrawCell(Point position)
-{
-    Console.SetCursorPosition(position.x, position.y);
-    string row = level[position.y];
-    char cellValue = row[position.x];
-    Console.Write(cellValue);
-}
