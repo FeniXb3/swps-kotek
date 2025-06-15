@@ -9,15 +9,14 @@ Player hero = new Player("Snake", "@");
 hero.speed = 1;
 hero.position = startingPoint;
 
-List<Player> clones = new List<Player>();
-clones.Add(hero);
+List<Character> characters = new List<Character>();
+characters.Add(hero);
 
-List<NonPlayerCharacter> npcs = new List<NonPlayerCharacter>();
 for (int i = 0; i < 5; i++)
 {
     NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L");
     npc.position = new Point(5 + i, 5);
-    npcs.Add(npc);
+    characters.Add(npc);
 }
 
 string[] level =
@@ -45,44 +44,33 @@ foreach (string row in level)
 
 while (true)
 {
-    foreach (Player element in clones)
+    foreach (Character element in characters)
     {
         element.Display();
     }
 
-    foreach (NonPlayerCharacter npc in npcs)
+    int charactersCount = characters.Count;
+    for (int i = 0; i < charactersCount; i++)
     {
-        npc.Display();
-    }
+        Character element = characters[i];
 
-    string chosenAction = hero.ChooseAction();
+        string chosenAction = element.ChooseAction();
 
-    if (!directionsMap.ContainsKey(chosenAction))
-    {
-        if (chosenAction == "clone")
+        if (!directionsMap.ContainsKey(chosenAction))
         {
-            Player clone = new Player(hero.name, "C");
-            clone.position = startingPoint;
-            clones.Add(clone);
+            if (chosenAction == "clone")
+            {
+                PlayerClone clone = new PlayerClone(hero, "C");
+                clone.position = startingPoint;
+                characters.Add(clone);
+            }
+
+            continue;
         }
-
-        continue;
-    }
-
-    foreach (Player element in clones)
-    {
         RedrawCell(element.position);
 
         Point direction = directionsMap[chosenAction];
         element.Move(direction, level);
-    }
-
-    foreach (NonPlayerCharacter npc in npcs)
-    {
-        string npcAction = npc.ChooseAction();
-        RedrawCell(npc.position);
-        Point npcDirection = directionsMap[npcAction];
-        npc.Move(npcDirection, level);
     }
 }
 

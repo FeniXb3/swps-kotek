@@ -1,5 +1,6 @@
 class Player : Character
 {
+    public string chosenAction;
     Dictionary<ConsoleKey, string> keyActionsMap = new Dictionary<ConsoleKey, string>
     {
         {ConsoleKey.A, "moveLeft"},
@@ -16,7 +17,7 @@ class Player : Character
     public override string ChooseAction()
     {
         ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
-        string chosenAction = keyActionsMap.GetValueOrDefault(pressedKeyInfo.Key, "pass");
+        chosenAction = keyActionsMap.GetValueOrDefault(pressedKeyInfo.Key, "pass");
 
         return chosenAction;
     }
