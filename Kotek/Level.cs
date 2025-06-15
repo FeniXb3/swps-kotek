@@ -51,9 +51,8 @@ class Level
     public void RedrawCell(Point position)
     {
         Console.SetCursorPosition(position.x, position.y);
-        string row = levelVisuals[position.y];
-        char cellValue = row[position.x];
-        Console.Write(cellValue);
+        Cell cell = levelData[position.y][position.x];
+        cell.Display();
     }
 
     public char GetCellVisuals(int x, int y)
