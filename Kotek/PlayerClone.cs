@@ -3,7 +3,7 @@ class PlayerClone : Player
     Player whosClone;
     List<string> allowedActions;
 
-    public PlayerClone(Player whosClone, string avatar) : base(whosClone.name, avatar)
+    public PlayerClone(Player whosClone, string avatar, Point startingPoint) : base(whosClone.name, avatar, startingPoint)
     {
         this.whosClone = whosClone;
         allowedActions = new List<string>

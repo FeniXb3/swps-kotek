@@ -1,24 +1,25 @@
 abstract class Character
 {
     public string name;
-    public Point position;
+    public Point Position { get; private set;}
     public int speed = 1;
     public string avatar;
 
-    public Character(string name, string avatar)
+    public Character(string name, string avatar, Point startingPoint)
     {
         this.name = name;
         this.avatar = avatar;
+        this.Position = startingPoint;
     }
 
     public void Move(Point direction, Level level)
     {
-        Point target = position;
+        Point target = Position;
 
         int signX = Math.Sign(direction.x);
         for (int x = 1; x <= Math.Abs(direction.x * speed); x++)
         {
-            int coordinateToTest = position.x + x * signX;
+            int coordinateToTest = Position.x + x * signX;
             if (level.GetCellVisuals(coordinateToTest, target.y) == '#')
             {
                 break;
@@ -30,7 +31,7 @@ abstract class Character
         int signY = Math.Sign(direction.y);
         for (int y = 1; y <= Math.Abs(direction.y * speed); y++)
         {
-            int coordinateToTest = position.y + y * signY;
+            int coordinateToTest = Position.y + y * signY;
             if (level.GetCellVisuals(target.x, coordinateToTest) == '#')
             {
                 break;
@@ -45,14 +46,14 @@ abstract class Character
 
         if (level.GetCellVisuals(target.x, target.y) != '#')
         {
-            position = target;
+            Position = target;
             speed += 1;
         }
     }
 
     public void Display()
     {
-        Console.SetCursorPosition(position.x, position.y);
+        Console.SetCursorPosition(Position.x, Position.y);
         Console.Write(avatar);
     }
 

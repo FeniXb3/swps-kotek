@@ -2,7 +2,7 @@ class NonPlayerCharacter : Character
 {
     List<string> allowedActions;
 
-    public NonPlayerCharacter(string name, string avatar) : base(name, avatar)
+    public NonPlayerCharacter(string name, string avatar, Point startingPoint) : base(name, avatar, startingPoint)
     {
         allowedActions = new List<string>
         {

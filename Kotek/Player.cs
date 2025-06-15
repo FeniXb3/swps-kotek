@@ -10,7 +10,7 @@ class Player : Character
         {ConsoleKey.C, "clone"},
     };
 
-    public Player(string name, string avatar) : base(name, avatar)
+    public Player(string name, string avatar, Point startingPoint) : base(name, avatar, startingPoint)
     {
     }
 
