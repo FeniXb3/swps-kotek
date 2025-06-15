@@ -4,12 +4,15 @@ abstract class Character
     public Point Position { get; private set;}
     public int speed = 1;
     public string avatar;
+    private readonly Level level;
 
-    public Character(string name, string avatar, Point startingPoint)
+    public Character(string name, string avatar, Point startingPoint, Level level)
     {
         this.name = name;
         this.avatar = avatar;
         this.Position = startingPoint;
+        this.level = level;
+        this.level.OccupyCell(Position, this);
     }
 
     public void Move(Point direction, Level level)

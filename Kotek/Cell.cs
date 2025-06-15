@@ -1,7 +1,7 @@
-
 class Cell
 {
     private char visuals;
+    private Character occupant;
 
     public Cell(char visuals)
     {
@@ -11,5 +11,10 @@ class Cell
     public void Display()
     {
         Console.Write(visuals);
+    }
+
+    internal void Occupy(Character character)
+    {
+        occupant = character;
     }
 }

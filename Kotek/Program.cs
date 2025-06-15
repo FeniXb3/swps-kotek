@@ -4,8 +4,9 @@ directionsMap.Add("moveRight", new Point(1, 0));
 directionsMap.Add("moveUp", new Point(0, -1));
 directionsMap.Add("moveDown", new Point(0, 1));
 
+Level firstLevel = new Level();
 Point startingPoint = new Point(16, 2);
-Player hero = new Player("Snake", "@", startingPoint);
+Player hero = new Player("Snake", "@", startingPoint, firstLevel);
 hero.speed = 1;
 
 List<Character> characters = new List<Character>();
@@ -13,11 +14,10 @@ characters.Add(hero);
 
 for (int i = 0; i < 5; i++)
 {
-    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(5 + i, 5));
+    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(5 + i, 5), firstLevel);
     characters.Add(npc);
 }
 
-Level firstLevel = new Level();
 
 firstLevel.Display();
 
@@ -39,7 +39,7 @@ while (true)
         {
             if (chosenAction == "clone")
             {
-                PlayerClone clone = new PlayerClone(hero, "C", startingPoint);
+                PlayerClone clone = new PlayerClone(hero, "C", startingPoint, firstLevel);
                 characters.Add(clone);
             }
 

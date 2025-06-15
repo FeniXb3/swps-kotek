@@ -69,4 +69,15 @@ class Level
     {
         return levelVisuals[rowNumber].Length;
     }
+
+    internal void OccupyCell(Point position, Character character)
+    {
+        Cell cell = GetCell(position.x, position.y);
+        cell.Occupy(character);
+    }
+
+    public Cell GetCell(int x, int y)
+    {
+        return levelData[y][x];
+    }
 }
